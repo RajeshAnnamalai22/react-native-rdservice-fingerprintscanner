@@ -17,6 +17,10 @@ const RdserviceFingerprintscanner = NativeModules.RdserviceFingerprintscanner
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return RdserviceFingerprintscanner.multiply(a, b);
+export function getDeviceInfo() {
+  return RdserviceFingerprintscanner.getDeviceInfo();
+}
+
+export function captureFinger() {
+  return RdserviceFingerprintscanner.captureFinger();
 }
