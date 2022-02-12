@@ -6,7 +6,7 @@ As per UIDAI (Aadhaar) guidelines, only registered biometric devices can be used
 
 This library makes it easy to work with all such devices so that your app can search for installed drivers and get the fingerprint data after a scan.
 
-For reference, you may check out the ([Aadhaar Registered Devices Technical Specification by UIDAI (https://uidai.gov.in/images/resource/Aadhaar_Registered_Devices_2_0_4.pdf)).
+For reference, you may check out the ([Aadhaar Registered Devices Technical Specification by UIDAI(https://uidai.gov.in/images/resource/Aadhaar_Registered_Devices_2_0_4.pdf)).
 
 
 ## Installation
