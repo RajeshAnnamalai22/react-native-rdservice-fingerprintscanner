@@ -33,11 +33,11 @@ getDeviceInfo()
       });
       
     captureFinger(pidOptions)
-      .then((res) => {
-        console.log(res, 'FINGER CAPTURE');
+      .then((response) => {
+        console.log(response, 'FINGER CAPTURE'); // Either The Device Connected or Not Connected Response here
       })
       .catch((e) => {
-        console.log(e, 'ERROR_FINGER_CAPTURE');
+        console.log(e, 'ERROR_FINGER_CAPTURE'); // Failed to capture the Fingerprint
       });
 ```
 
