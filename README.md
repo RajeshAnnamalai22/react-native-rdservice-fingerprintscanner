@@ -32,7 +32,7 @@ getDeviceInfo()
         console.log(error, 'DEVICE DRIVER NOT FOUND'); //Failed to get device information
       });
       
-    captureFinger(pidOptions) // pidOptions is an XML String that you have to pass to this method. Refer [UIDAI Document (https://uidai.gov.in/images/resource/Aadhaar_Registered_Devices_2_0_4.pdf)
+    captureFinger(pidOptions)
       .then((res) => {
         console.log(res, 'FINGER CAPTURE');
       })
@@ -40,6 +40,8 @@ getDeviceInfo()
         console.log(e, 'ERROR_FINGER_CAPTURE');
       });
 ```
+
+```pidOptions``` is an XML String that you have to pass to this method. Refer [UIDAI Document (https://uidai.gov.in/images/resource/Aadhaar_Registered_Devices_2_0_4.pdf)
 
 ## Contributing
 
