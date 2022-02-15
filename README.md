@@ -17,6 +17,13 @@ For reference, you may check out the ([Aadhaar Registered Devices by UIDAI](http
 npm install react-native-rdservice-fingerprintscanner
 ```
 
+Add UIDAI-RDService-Manager library dependency to your app build.gradle file:
+
+```Dependencies {
+  // ...
+  implementation 'com.github.ekoindia:android-uidai-rdservice-manager:1.3.0'
+}```
+
 ## Usage
 
 ```js
