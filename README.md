@@ -20,11 +20,25 @@ npm install react-native-rdservice-fingerprintscanner
 ## Usage
 
 ```js
-import { multiply } from "react-native-rdservice-fingerprintscanner";
+import { getDeviceInfo, captureFinger } from "react-native-rdservice-fingerprintscanner";
 
 // ...
 
-const result = await multiply(3, 7);
+getDeviceInfo()
+      .then((response) => {
+        console.log(response, 'DEVICE DRIVER FOUND'); // Either The Device connected or not connected response here
+      })
+      .catch((error) => {
+        console.log(error, 'DEVICE DRIVER NOT FOUND'); //Failed to get device information
+      });
+      
+    captureFinger(pidOptions) // pidOptions is an XML String that you have to pass to this method. Refer [UIDAI Document (https://uidai.gov.in/images/resource/Aadhaar_Registered_Devices_2_0_4.pdf)
+      .then((res) => {
+        console.log(res, 'FINGER CAPTURE');
+      })
+      .catch((e) => {
+        console.log(e, 'ERROR_FINGER_CAPTURE');
+      });
 ```
 
 ## Contributing
