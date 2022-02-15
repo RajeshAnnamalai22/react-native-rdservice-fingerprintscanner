@@ -41,7 +41,7 @@ getDeviceInfo()
       });
 ```
 
-```pidOptions``` is an XML String that you have to pass to this method. Refer [UIDAI Document (https://uidai.gov.in/images/resource/Aadhaar_Registered_Devices_2_0_4.pdf)
+```pidOptions``` is an XML String that you have to pass to this method. Refer [UIDAI Document](https://uidai.gov.in/images/resource/Aadhaar_Registered_Devices_2_0_4.pdf)
 
 ## Contributing
 
