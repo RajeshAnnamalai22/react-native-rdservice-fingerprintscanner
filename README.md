@@ -17,15 +17,43 @@ For reference, you may check out the ([Aadhaar Registered Devices by UIDAI](http
 npm install react-native-rdservice-fingerprintscanner
 ```
 
+Add UIDAI-RDService-Manager library dependency ```android/build.gradle``` file:
+
+
+```java
+allprojects {
+  repositories {
+    // ...
+    maven { url 'https://jitpack.io' }
+  }
+}
+```
+
 ## Usage
 
 ```js
-import { multiply } from "react-native-rdservice-fingerprintscanner";
+import { getDeviceInfo, captureFinger } from "react-native-rdservice-fingerprintscanner";
 
 // ...
 
-const result = await multiply(3, 7);
+getDeviceInfo()
+      .then((response) => {
+        console.log(response, 'DEVICE DRIVER FOUND'); // Either The Device connected or not connected response here
+      })
+      .catch((error) => {
+        console.log(error, 'DEVICE DRIVER NOT FOUND'); //Failed to get device information
+      });
+      
+    captureFinger(pidOptions)
+      .then((response) => {
+        console.log(response, 'FINGER CAPTURE'); // Either The Device Connected or Not Connected Response here
+      })
+      .catch((e) => {
+        console.log(e, 'ERROR_FINGER_CAPTURE'); // Failed to capture the Fingerprint
+      });
 ```
+
+```pidOptions``` is an XML String that you have to pass to this method. Refer [UIDAI Document](https://uidai.gov.in/images/resource/Aadhaar_Registered_Devices_2_0_4.pdf)
 
 ## Contributing
 
@@ -34,3 +62,7 @@ See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the 
 ## License
 
 MIT
+
+## Would you like to support me?
+
+<a href="https://www.buymeacoffee.com/senthalan2" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-red.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
