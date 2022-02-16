@@ -37,18 +37,20 @@ public class RdserviceFingerprintscannerModule extends ReactContextBaseJavaModul
 
   @ReactMethod
   public void getDeviceInfo( Promise promise) {
+    this.promise = promise;
     final Activity activity = getCurrentActivity();
     rdServiceManager.discoverRdService(activity);
-    this.promise = promise;
+
 
   }
 
   @ReactMethod
   public void captureFinger(String pidOptions, Promise promise) {
+    this.promise = promise;
     final Activity activity = getCurrentActivity();
 
     rdServiceManager.captureRdService(servicePackage,pidOptions,activity);
-    this.promise = promise;
+
 
   }
 
