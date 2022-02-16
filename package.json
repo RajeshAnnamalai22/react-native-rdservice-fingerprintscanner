@@ -1,6 +1,6 @@
 {
   "name": "react-native-rdservice-fingerprintscanner",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "FingerPrint Scanner RD Service",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
