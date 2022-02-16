@@ -44,10 +44,10 @@ public class RdserviceFingerprintscannerModule extends ReactContextBaseJavaModul
   }
 
   @ReactMethod
-  public void captureFinger( Promise promise) {
+  public void captureFinger(String pidOptions, Promise promise) {
     final Activity activity = getCurrentActivity();
-    String PIDOptions =  "<PidOptions><Opts fCount=\"1\" fType=\"0\" iCount=\"0\" pCount=\"0\" format=\"0\" pidVer=\"2.0\" timeout=\"20000\" otp=\"\" posh=\"LEFT_INDEX\" env=\"S\" wadh=\"\" /> <Demo></Demo> <CustOpts> <Param name=\"Param1\" value=\"\" /> </CustOpts> </PidOptions>";
-    rdServiceManager.captureRdService(servicePackage,PIDOptions,activity);
+
+    rdServiceManager.captureRdService(servicePackage,pidOptions,activity);
     this.promise = promise;
 
   }
@@ -79,7 +79,6 @@ public class RdserviceFingerprintscannerModule extends ReactContextBaseJavaModul
   @Override
   public void onRDServiceDriverNotFound() {
     // Called when no installed driver is found
-    Toast.makeText(getCurrentActivity(), "DriverNotFound", Toast.LENGTH_SHORT).show();
     WritableMap responseData = Arguments.createMap();
     responseData.putInt("status",0);
     responseData.putString("message","Driver Not Found");
@@ -89,7 +88,6 @@ public class RdserviceFingerprintscannerModule extends ReactContextBaseJavaModul
   @Override
   public void onRDServiceDriverDiscoveryFailed(int resultCode, Intent data, String rdServicePackage, String reason) {
     // Called when a discovered driver fails to provide a proper status information
-    Toast.makeText(getCurrentActivity(), "DriverDiscoveryFailed", Toast.LENGTH_SHORT).show();
     promise.reject("DRIVER_DISCOVERY_FAILED","Driver Discovery Failed");
 
   }
@@ -97,7 +95,6 @@ public class RdserviceFingerprintscannerModule extends ReactContextBaseJavaModul
   @Override
   public void onRDServiceCaptureFailed(int resultCode, Intent data, String rdServicePackage) {
     // Called when fingerprint capture fails
-    Toast.makeText(getCurrentActivity(), "CaptureFailed", Toast.LENGTH_SHORT).show();
     promise.reject("FINGERPRINT_CAPTURE__FAILED","FingerPrint Capture Failed");
   }
 
@@ -105,7 +102,6 @@ public class RdserviceFingerprintscannerModule extends ReactContextBaseJavaModul
     @Override
     public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent data) {
       super.onActivityResult(activity, requestCode, resultCode, data);
-      Toast.makeText(getCurrentActivity(), "RESULT ACTIVITY", Toast.LENGTH_SHORT).show();
       rdServiceManager.onActivityResult(requestCode, resultCode, data);
     }
   }

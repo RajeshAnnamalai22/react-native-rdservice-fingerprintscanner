@@ -21,6 +21,6 @@ export function getDeviceInfo() {
   return RdserviceFingerprintscanner.getDeviceInfo();
 }
 
-export function captureFinger() {
-  return RdserviceFingerprintscanner.captureFinger();
+export function captureFinger(pidOptions) {
+  return RdserviceFingerprintscanner.captureFinger(pidOptions);
 }
