@@ -54,7 +54,7 @@ getDeviceInfo()
 
 ```pidOptions``` is an XML String that you have to pass to ```captureFinger``` method. Refer [UIDAI Document](https://uidai.gov.in/images/resource/Aadhaar_Registered_Devices_2_0_4.pdf)
 
-```Note : First, Must be call ```getDeviceInfo()``` method to get fingerprint device info. According to the response of getDeviceInfo() method, call captureFinger() Method. call ```
+```Note``` : First, Must be call ```getDeviceInfo()``` method to get fingerprint device info. According to the response of ```getDeviceInfo()``` method, call ```captureFinger()``` Method.
 
 ## Contributing
 
