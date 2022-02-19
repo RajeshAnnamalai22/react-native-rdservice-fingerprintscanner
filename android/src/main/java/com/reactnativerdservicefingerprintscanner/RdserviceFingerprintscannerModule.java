@@ -40,18 +40,13 @@ public class RdserviceFingerprintscannerModule extends ReactContextBaseJavaModul
     this.promise = promise;
     final Activity activity = getCurrentActivity();
     rdServiceManager.discoverRdService(activity);
-
-
   }
 
   @ReactMethod
   public void captureFinger(String pidOptions, Promise promise) {
     this.promise = promise;
     final Activity activity = getCurrentActivity();
-
     rdServiceManager.captureRdService(servicePackage,pidOptions,activity);
-
-
   }
 
   @Override
@@ -60,7 +55,7 @@ public class RdserviceFingerprintscannerModule extends ReactContextBaseJavaModul
     servicePackage = rdServicePackage;
 
     WritableMap responseData = Arguments.createMap();
-    responseData.putInt("status",1);
+    responseData.putInt("status",2);
     responseData.putString("rdServiceInfo", rdServiceInfo);
     responseData.putString("rdServicePackage", rdServicePackage);
     responseData.putBoolean("isWhitelisted",isWhitelisted);
