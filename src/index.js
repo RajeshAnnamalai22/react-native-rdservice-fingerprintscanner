@@ -18,9 +18,24 @@ const RdserviceFingerprintscanner = NativeModules.RdserviceFingerprintscanner
     );
 
 export function getDeviceInfo() {
-  return RdserviceFingerprintscanner.getDeviceInfo();
+ return new Promise((resolve,reject)=>{
+  RdserviceFingerprintscanner.getDeviceInfo().then(res=>{
+    resolve(res)
+  }).catch(err=>{
+    reject(err)
+  })
+ })
+
 }
 
 export function captureFinger(pidOptions) {
-  return RdserviceFingerprintscanner.captureFinger(pidOptions);
+  return new Promise((resolve,reject)=>{
+    RdserviceFingerprintscanner.captureFinger(pidOptions).then(res => {
+      resolve(res)
+    }).catch( err => {
+      reject(err)
+    })
+
+  }) 
+  
 }
