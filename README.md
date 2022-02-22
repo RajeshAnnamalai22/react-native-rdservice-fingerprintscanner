@@ -65,10 +65,10 @@ getDeviceInfo()
 Key | Value | Description  
 --- | --- | ---
 status | -1 or 1 or 0 | ```-1``` - Device Driver not Found, ```1``` - READY, ```0``` - NOTREADY
-isWhitelisted |  
-rdServiceInfoJson |  
-rdServiceInfoXML |  
-rdServicePackage | 
+isWhitelisted | true or false | iT is about the Device is Approved or not. ```true``` - Approved, ```false``` - Not Approved  
+rdServiceInfoJson |JSON DATA | The device returns XML DATA of Device Information. this parameter contains converted JSON DATA from XML DATA
+rdServiceInfoXML | XML DATA | Device Information
+rdServicePackage | Device Package
 
 
 
