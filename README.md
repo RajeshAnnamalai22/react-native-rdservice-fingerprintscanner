@@ -60,7 +60,7 @@ getDeviceInfo()
 
 ## Response JSON Object
 
-```getDeviceInfo()``` Method
+```getDeviceInfo()``` Method Reponse
 
 Key | Value | Description  
 --- | --- | ---
@@ -72,7 +72,7 @@ rdServicePackage | Device Package
 
 
 
-```captureFinger()``` Method
+```captureFinger()``` Method Reponse
 
 Key | Value | Description  
 --- | --- | ---
