@@ -64,9 +64,9 @@ getDeviceInfo()
 
 Key | Value | Description  
 --- | --- | ---
-status | -1 or 1 or 0 | -1 - Device Driver not Found 
-1 - READY
+status | -1 or 1 or 0 | -1 - Device Driver not Found 1 - READY
 0 - NOTREADY
+
 isWhitelisted |  
 rdServiceInfoJson |  
 rdServiceInfoXML |  
