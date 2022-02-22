@@ -76,7 +76,7 @@ Key | Value | Description
 --- | --- | ---
 status | 1 or 0 | ```1``` - Fingerprint Captured Successfully, ```0``` - FingerPrint not Captured (Check Connection of Device and OTG Connection Settings in Mobile)
 errorCode | ERROR CODE from RD Service | Refer [Error Code Document](https://uidai.gov.in/images/resource/Aadhaar_Registered_Devices_2_0_4.pdf)
-errInfo | Error Message according to the ERROR CODE 
+errInfo | Error Message according to the ERROR CODE | Refer [Error Code Document](https://uidai.gov.in/images/resource/Aadhaar_Registered_Devices_2_0_4.pdf)
 pidDataJson |JSON DATA | The device returns PID DATA of Captured Fingerprint. this parameter contains converted JSON pidData of XML pidData
 pidDataXML | XML DATA | pidData Captured Fingerprint
 rdServicePackage | Device Package
