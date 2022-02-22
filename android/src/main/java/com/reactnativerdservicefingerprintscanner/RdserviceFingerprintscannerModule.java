@@ -67,9 +67,11 @@ public class RdserviceFingerprintscannerModule extends ReactContextBaseJavaModul
       WritableMap responseData = Arguments.createMap();
       if(statusMsg.equals("READY")){
         responseData.putInt("status",1);
+        responseData.putString("message","Device is Ready");
       }
       else {
         responseData.putInt("status",0);
+        responseData.putString("message","Make Sure the Device is Connected and OTG Connection is Enabled in your Mobile");
       }
       responseData.putString("rdServiceInfoJsonString", jsonString);
       responseData.putString("rdServiceInfoXML", rdServiceInfo);
@@ -98,9 +100,11 @@ public class RdserviceFingerprintscannerModule extends ReactContextBaseJavaModul
       WritableMap responseData = Arguments.createMap();
       if(Integer.parseInt(errorCode) == 0 ){
         responseData.putInt("status",1);
+        responseData.putString("message","FingerPrint Scanned Successfully");
       }
       else {
         responseData.putInt("status",0);
+        responseData.putString("message","Make Sure the Device is Connected and OTG Connection is Enabled in your Mobile");
       }
 
       responseData.putString("errorCode",errorCode);
