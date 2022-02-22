@@ -37,7 +37,7 @@ import { getDeviceInfo, captureFinger } from "react-native-rdservice-fingerprint
 
 getDeviceInfo()
       .then((response) => {
-        console.log(response, 'DEVICE DRIVER FOUND'); // Either The Device connected or not connected response here
+        console.log(response, 'DEVICE DRIVER FOUND'); // Response about Device Driver
       })
       .catch((error) => {
         console.log(error, 'DEVICE DRIVER NOT FOUND'); //Failed to get device information
@@ -45,16 +45,34 @@ getDeviceInfo()
       
     captureFinger(pidOptions)
       .then((response) => {
-        console.log(response, 'FINGER CAPTURE'); // Either The Device Connected or Not Connected Response here
+        console.log(response, 'FINGER CAPTURE'); // FingerPrint Response
       })
       .catch((e) => {
         console.log(e, 'ERROR_FINGER_CAPTURE'); // Failed to capture the Fingerprint
       });
 ```
 
+
 ```pidOptions``` is an XML String that you have to pass to ```captureFinger``` method. Refer [UIDAI Document](https://uidai.gov.in/images/resource/Aadhaar_Registered_Devices_2_0_4.pdf)
 
 ```Note``` : Call ```captureFinger()``` Method after getting response from getDeviceInfo() method. Calling of ```captureFinger()``` method before ```getDeviceInfo()``` method, only returns Error in ```catch``` block. Refer [Example Code](https://github.com/senthalan2/react-native-rdservice-fingerprintscanner/blob/main/example/src/App.js) 
+
+
+## Response JSON Object
+
+```getDeviceInfo```
+
+Key | Value | Description  
+--- | ---  
+status | -1 or 1 or 0 | -1 - Device Driver not Found 
+1 - READY
+0 - NOTREADY
+isWhitelisted |  
+rdServiceInfoJson |  
+rdServiceInfoXML |  
+rdServicePackage | 
+
+
 
 ## Contributing
 
