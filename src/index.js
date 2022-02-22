@@ -18,24 +18,48 @@ const RdserviceFingerprintscanner = NativeModules.RdserviceFingerprintscanner
     );
 
 export function getDeviceInfo() {
- return new Promise((resolve,reject)=>{
-  RdserviceFingerprintscanner.getDeviceInfo().then(res=>{
-    resolve(res)
-  }).catch(err=>{
-    reject(err)
-  })
- })
-
+  return new Promise((resolve, reject) => {
+    RdserviceFingerprintscanner.getDeviceInfo()
+      .then((res) => {
+        if (res.status === -1) {
+          const resObj = {
+            status: res.status,
+            message: res.message,
+          };
+          resolve(resObj);
+        } else {
+          const resObj = {
+            isWhitelisted: res.isWhitelisted,
+            rdServiceInfoJson: JSON.parse(res.rdServiceInfoJsonString),
+            rdServiceInfoXML: res.rdServiceInfoXML,
+            rdServicePackage: res.rdServicePackage,
+            status: res.status,
+          };
+          resolve(resObj);
+        }
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
 }
 
 export function captureFinger(pidOptions) {
-  return new Promise((resolve,reject)=>{
-    RdserviceFingerprintscanner.captureFinger(pidOptions).then(res => {
-      resolve(res)
-    }).catch( err => {
-      reject(err)
-    })
-
-  }) 
-  
+  return new Promise((resolve, reject) => {
+    RdserviceFingerprintscanner.captureFinger(pidOptions)
+      .then((res) => {
+        const resObj = {
+          pidDataJson: JSON.parse(res.pidDataJsonString),
+          pidDataXML: res.pidDataXML,
+          rdServicePackage: res.rdServicePackage,
+          status: res.status,
+          errInfo: res.errInfo,
+          errorCode: parseInt(res.errorCode),
+        };
+        resolve(resObj);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
 }

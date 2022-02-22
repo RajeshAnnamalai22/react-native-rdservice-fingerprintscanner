@@ -2,6 +2,7 @@ package com.reactnativerdservicefingerprintscanner;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,11 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.module.annotations.ReactModule;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import fr.arnaudguyon.xmltojsonlib.XmlToJson;
 
 @ReactModule(name = RdserviceFingerprintscannerModule.NAME)
 public class RdserviceFingerprintscannerModule extends ReactContextBaseJavaModule implements RDServiceEvents {
@@ -53,23 +59,61 @@ public class RdserviceFingerprintscannerModule extends ReactContextBaseJavaModul
   public void onRDServiceDriverDiscovery(String rdServiceInfo, String rdServicePackage, Boolean isWhitelisted) {
     // Called when an installed driver is discovered
     servicePackage = rdServicePackage;
+    XmlToJson xmlToJson = new XmlToJson.Builder(rdServiceInfo).build();
+    String jsonString = xmlToJson.toString();
+    try{
+      JSONObject obj = new JSONObject(jsonString);
+      String statusMsg = obj.getJSONObject("RDService").getString("status");
+      WritableMap responseData = Arguments.createMap();
+      if(statusMsg.equals("READY")){
+        responseData.putInt("status",1);
+      }
+      else {
+        responseData.putInt("status",0);
+      }
+      responseData.putString("rdServiceInfoJsonString", jsonString);
+      responseData.putString("rdServiceInfoXML", rdServiceInfo);
+      responseData.putString("rdServicePackage", rdServicePackage);
+      responseData.putBoolean("isWhitelisted",isWhitelisted);
+      promise.resolve(responseData);
+    }
+    catch(JSONException e){
+      promise.reject("DRIVER_DISCOVERY_FAILED","Driver Discovery Failed");
+    }
 
-    WritableMap responseData = Arguments.createMap();
-    responseData.putInt("status",2);
-    responseData.putString("rdServiceInfo", rdServiceInfo);
-    responseData.putString("rdServicePackage", rdServicePackage);
-    responseData.putBoolean("isWhitelisted",isWhitelisted);
-    promise.resolve(responseData);
+
   }
 
   @Override
   public void onRDServiceCaptureResponse(String pidData, String rdServicePackage) {
-    // Called when fingerprint is successfully captured
-    WritableMap responseData = Arguments.createMap();
-    responseData.putInt("status",1);
-    responseData.putString("pidData", pidData);
-    responseData.putString("rdServicePackage", rdServicePackage);
-    promise.resolve(responseData);
+
+    XmlToJson xmlToJson = new XmlToJson.Builder(pidData).build();
+    String jsonString = xmlToJson.toString();
+
+    try{
+      JSONObject obj = new JSONObject(jsonString);
+      JSONObject response =  obj.getJSONObject("PidData").getJSONObject("Resp");
+      String errorCode = response.getString("errCode");
+      String errInfo = response.getString("errInfo");
+      WritableMap responseData = Arguments.createMap();
+      if(Integer.parseInt(errorCode) == 0 ){
+        responseData.putInt("status",1);
+      }
+      else {
+        responseData.putInt("status",0);
+      }
+
+      responseData.putString("errorCode",errorCode);
+      responseData.putString("errInfo",errInfo);
+      responseData.putString("pidDataJsonString", jsonString);
+      responseData.putString("pidDataXML", pidData);
+      responseData.putString("rdServicePackage", rdServicePackage);
+      promise.resolve(responseData);
+    }
+    catch (JSONException e){
+      promise.reject("FINGERPRINT_CAPTURE__FAILED","FingerPrint Capture Failed");
+    }
+
 
   }
 
@@ -77,7 +121,7 @@ public class RdserviceFingerprintscannerModule extends ReactContextBaseJavaModul
   public void onRDServiceDriverNotFound() {
     // Called when no installed driver is found
     WritableMap responseData = Arguments.createMap();
-    responseData.putInt("status",0);
+    responseData.putInt("status",-1);
     responseData.putString("message","Driver Not Found");
     promise.resolve(responseData);
   }
