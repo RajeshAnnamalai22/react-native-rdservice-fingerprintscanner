@@ -60,7 +60,7 @@ getDeviceInfo()
 
 ## Response JSON Object
 
-```getDeviceInfo```
+```getDeviceInfo()``` Method
 
 Key | Value | Description  
 --- | --- | ---
@@ -70,7 +70,9 @@ rdServiceInfoJson |JSON DATA | The device returns XML DATA of Device Information
 rdServiceInfoXML | XML DATA | Device Information
 rdServicePackage | Device Package
 
-```captureFinger```
+
+
+```captureFinger()``` Method
 
 Key | Value | Description  
 --- | --- | ---
