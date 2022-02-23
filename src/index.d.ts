@@ -20,6 +20,7 @@ declare module "react-native-rdservice-fingerprintscanner" {
       status: number,
       errInfo: string,
       errorCode: number,
+      message: string,
     }
 
     export function getDeviceInfo(): Promise<deviceInfoProps | optionalInfo>;
