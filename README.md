@@ -69,6 +69,7 @@ isWhitelisted | true or false | iT is about the Device is Approved or not. ```tr
 rdServiceInfoJson |JSON DATA | The device returns XML DATA of Device Information. this parameter contains converted JSON DATA of XML DATA
 rdServiceInfoXML | XML DATA | Device Information
 rdServicePackage | Device Package
+message | Message about Success or Failure
 
 
 
@@ -82,6 +83,7 @@ errInfo | Error Message according to the ERROR CODE | Refer [UIDAI Document](htt
 pidDataJson |JSON DATA | The device returns PID DATA of Captured Fingerprint. this parameter contains converted JSON pidData of XML pidData
 pidDataXML | XML DATA | pidData Captured Fingerprint
 rdServicePackage | Device Package
+message | Message about Success or Failure
 
 
 ## Contributing

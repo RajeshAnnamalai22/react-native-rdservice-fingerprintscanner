@@ -10,6 +10,7 @@ export default function App() {
   const start = () => {
     getDeviceInfo()
       .then((res) => {
+      
         console.log(res, 'DEVICE INFO');
       })
       .catch((e) => {
@@ -22,6 +23,7 @@ export default function App() {
       '<PidOptions><Opts fCount="1" fType="0" iCount="0" pCount="0" format="0" pidVer="2.0" timeout="20000" otp="" posh="LEFT_INDEX" env="S" wadh="" /> <Demo></Demo> <CustOpts> <Param name="Param1" value="" /> </CustOpts> </PidOptions>';
     captureFinger(pidOptions)
       .then((res) => {
+    
         console.log(res, 'FINGER CAPTURE');
       })
       .catch((e) => {

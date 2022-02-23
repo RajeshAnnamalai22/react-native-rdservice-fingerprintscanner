@@ -1,10 +1,10 @@
 {
   "name": "react-native-rdservice-fingerprintscanner",
-  "version": "1.0.7",
+  "version": "1.1.6",
   "description": "FingerPrint Scanner RD Service",
-  "main": "lib/commonjs/index",
+  "main": "src/index.js",
   "module": "lib/module/index",
-  "types": "lib/typescript/index.d.ts",
+  "types": "src/index.d.ts",
   "react-native": "src/index",
   "source": "src/index",
   "files": [
