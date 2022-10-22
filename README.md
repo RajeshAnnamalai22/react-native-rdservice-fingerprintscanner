@@ -31,7 +31,7 @@ allprojects {
 ## Usage
 
 ```js
-import { getDeviceInfo, captureFinger } from "react-native-rdservice-fingerprintscanner";
+import { getDeviceInfo, captureFinger,DEFAULT_PID_OPTIONS } from "react-native-rdservice-fingerprintscanner";
 
 // ...
 
@@ -43,7 +43,7 @@ getDeviceInfo()
         console.log(error, 'DEVICE DRIVER NOT FOUND'); //Failed to get device information
       });
       
-    captureFinger(pidOptions)
+    captureFinger(pidOptions) //you can pass pidOptions (optional) to "captureFinger(pidOptions)"" method otherwise it takes DEFAULT_PID_OPTIONS
       .then((response) => {
         console.log(response, 'FINGER CAPTURE'); // FingerPrint Response
       })
@@ -54,6 +54,8 @@ getDeviceInfo()
 
 
 ```pidOptions``` is an XML String that you have to pass to ```captureFinger``` method. Refer [UIDAI Document](https://uidai.gov.in/images/resource/Aadhaar_Registered_Devices_2_0_4.pdf)
+
+```DEFAULT_PID_OPTIONS``` is used when you not passed the pidOptions to the ```captureFinger()``` Method.
 
 ```Note``` : Call ```captureFinger()``` Method after getting response from getDeviceInfo() method. Calling of ```captureFinger()``` method before ```getDeviceInfo()``` method, only returns Error in ```catch``` block. Refer [Example Code](https://github.com/senthalan2/react-native-rdservice-fingerprintscanner/blob/main/example/src/App.js) 
 
@@ -85,6 +87,13 @@ pidDataXML | XML DATA | pidData Captured Fingerprint
 rdServicePackage | Device Package
 message | Message about Success or Failure
 
+## Tested Devices
+
+Device Name | Result
+--- | ---
+STARTEK | :white_check_mark:
+MORPHO | :white_check_mark:
+MANTRA | :white_check_mark:
 
 ## Contributing
 
