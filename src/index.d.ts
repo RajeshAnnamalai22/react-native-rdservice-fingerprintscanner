@@ -23,6 +23,7 @@ declare module "react-native-rdservice-fingerprintscanner" {
       message: string,
     }
 
+    export const DEFAULT_PID_OPTIONS :string;
     export function getDeviceInfo(): Promise<deviceInfoProps | optionalInfo>;
     export function captureFinger(pidOptions: string):Promise<fingerprintDataProps>;
 

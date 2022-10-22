@@ -16,8 +16,9 @@ const RdserviceFingerprintscanner = NativeModules.RdserviceFingerprintscanner
         },
       }
     );
+export const DEFAULT_PID_OPTIONS = `<PidOptions ver="1.0"> <Opts fCount="1" fType="0" iCount="0" pCount="0" format="0" pidVer="2.0" timeout="20000" otp="" posh="UNKNOWN" env="P" wadh="" /> <Demo></Demo><CustOpts> <Param name="ValidationKey" value="" /> </CustOpts> </PidOptions>`;
 
-export function getDeviceInfo(){
+export function getDeviceInfo() {
   return new Promise((resolve, reject) => {
     RdserviceFingerprintscanner.getDeviceInfo()
       .then((res) => {
@@ -45,7 +46,7 @@ export function getDeviceInfo(){
   });
 }
 
-export function captureFinger(pidOptions) {
+export function captureFinger(pidOptions = DEFAULT_PID_OPTIONS) {
   return new Promise((resolve, reject) => {
     RdserviceFingerprintscanner.captureFinger(pidOptions)
       .then((res) => {

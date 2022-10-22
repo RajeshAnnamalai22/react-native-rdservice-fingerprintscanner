@@ -96,13 +96,14 @@ public class RdserviceFingerprintscannerModule extends ReactContextBaseJavaModul
       JSONObject obj = new JSONObject(jsonString);
       JSONObject response =  obj.getJSONObject("PidData").getJSONObject("Resp");
       String errorCode = response.getString("errCode");
-      String errInfo = response.getString("errInfo");
+      String errInfo = "";
       WritableMap responseData = Arguments.createMap();
       if(Integer.parseInt(errorCode) == 0 ){
         responseData.putInt("status",1);
         responseData.putString("message","FingerPrint Scanned Successfully");
       }
       else {
+         errInfo = response.getString("errInfo");
         responseData.putInt("status",0);
         responseData.putString("message","Make Sure the Device is Connected and OTG Connection is Enabled in your Mobile");
       }
@@ -117,8 +118,6 @@ public class RdserviceFingerprintscannerModule extends ReactContextBaseJavaModul
     catch (JSONException e){
       promise.reject("FINGERPRINT_CAPTURE__FAILED","FingerPrint Capture Failed");
     }
-
-
   }
 
   @Override

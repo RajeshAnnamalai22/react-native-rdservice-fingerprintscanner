@@ -4,13 +4,13 @@ import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import {
   getDeviceInfo,
   captureFinger,
+  DEFAULT_PID_OPTIONS,
 } from 'react-native-rdservice-fingerprintscanner';
 
 export default function App() {
   const start = () => {
     getDeviceInfo()
       .then((res) => {
-      
         console.log(res, 'DEVICE INFO');
       })
       .catch((e) => {
@@ -19,11 +19,10 @@ export default function App() {
   };
 
   const capture = () => {
-    const pidOptions =
-      '<PidOptions><Opts fCount="1" fType="0" iCount="0" pCount="0" format="0" pidVer="2.0" timeout="20000" otp="" posh="LEFT_INDEX" env="S" wadh="" /> <Demo></Demo> <CustOpts> <Param name="Param1" value="" /> </CustOpts> </PidOptions>';
-    captureFinger(pidOptions)
+    // const pidOptions =
+    //   '<PidOptions><Opts fCount="1" fType="0" iCount="0" pCount="0" format="0" pidVer="2.0" timeout="20000" otp="" posh="LEFT_INDEX" env="S" wadh="" /> <Demo></Demo> <CustOpts> <Param name="Param1" value="" /> </CustOpts> </PidOptions>';
+    captureFinger() //you can pass pidOptions to "captureFinger(pidOptions)"" method otherwise it takes DEFAULT_PID_OPTIONS
       .then((res) => {
-    
         console.log(res, 'FINGER CAPTURE');
       })
       .catch((e) => {
