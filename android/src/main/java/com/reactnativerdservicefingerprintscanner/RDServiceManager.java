@@ -39,6 +39,9 @@ public class RDServiceManager {
       put("com.mantra.rdservice", "Mantra");
       put("com.acpl.registersdk", "Startek FM220");
       put("com.rd.gemalto.com.rdserviceapp", "Gemalto 3M Cogent CSD200");
+      put("com.integra.registered.device", "Integra");
+      put("com.aratek.asix_gms.rdservice", "Aratek");
+      put("rdservice.metsl.metslrdservice", "Maestros");
 
       put("com.tatvik.bio.tmf20", "Tatvik TMF20");
       put("com.evolute.rdservice", "Evolute");
@@ -46,6 +49,7 @@ public class RDServiceManager {
       put("com.mantra.mis100v2.rdservice", "MIS100V2 by Mantra");
       put("com.nextbiometrics.rdservice", "NEXT Biometrics NB-3023");
       put("com.iritech.rdservice", "IriTech IriShield");
+      put("com.evolute.iris.rdservice", "Evolute IRIS");
     }
   };
 
